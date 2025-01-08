@@ -1,0 +1,131 @@
+.mainContainer {
+    width: calc(100% - 10px);
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+    background-color: var(--item-background-color);
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    flex-wrap: nowrap;
+    text-decoration: none;
+}
+
+.mainContainer:hover {
+    border: 1px solid var(--sky-300);
+    box-shadow: 0px 0px 10px var(--sky-300);
+    cursor: pointer;
+}
+
+.leftContainer{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    text-decoration: none;
+}
+
+.programNameAndPresenterContainer {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.programName {
+    font-size: 18px;
+    color: var(--text-color1);
+    font-weight: bold;
+}
+
+.presenter {
+    font-size: 14px;
+    color: var(--text-color2);
+}
+
+.timeContainer {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--text-color1);
+    font-size: 18px;
+}
+
+.bookmarkBtnContainer{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.bookmarkBtn{
+    color: var(--yellow-300);
+}
+
+.bookmarkBtnContainer:hover{
+    filter: drop-shadow(0 0 20px var(--yellow-500));
+    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 800px) {
+    .mainContainer {
+        width: calc(100% - 10px);
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px;
+        padding: 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        flex-wrap: wrap;
+    }
+
+    .leftContainer{
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .timeContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 12px;
+    }
+
+    .programNameAndPresenterContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    .programName {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .presenter {
+        font-size: 12px;
+    }
+}

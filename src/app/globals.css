@@ -1,0 +1,24 @@
+@import '../../src/app/utilities/Color.css';
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+
+
+
+body {
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+    zoom: 100%;
+}
+
