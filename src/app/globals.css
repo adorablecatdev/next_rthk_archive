@@ -1,6 +1,6 @@
 @import '../../src/app/utilities/Color.css';
 
-[data-theme="light"] {
+html[data-theme="light"] {
     --background-color: var(--slate-50);
     --text-color1: var(--slate-500);
     --text-color2: var(--slate-400);
@@ -10,7 +10,7 @@
     --progress-background: var(--slate-200);
 }
 
-[data-theme="dark"] {
+html[data-theme="dark"] {
     --background-color: var(--slate-800);
     --text-color1: var(--slate-300);
     --text-color2: var(--slate-400);
