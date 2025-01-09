@@ -1,19 +1,36 @@
 @import '../../src/app/utilities/Color.css';
 
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
+[data-theme="light"] {
+    --background-color: var(--slate-50);
+    --text-color1: var(--slate-500);
+    --text-color2: var(--slate-400);
+    --button-color: white;
+    --border-color: var(--slate-200);
+    --item-background-color: white;
+    --progress-background: var(--slate-200);
+}
+
+[data-theme="dark"] {
+    --background-color: var(--slate-800);
+    --text-color1: var(--slate-300);
+    --text-color2: var(--slate-400);
+    --button-color: black;
+    --border-color: var(--slate-500);
+    --item-background-color: black;
+    --progress-background: var(--slate-500);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
+        --background-color: var(--slate-800);
+        --text-color1: var(--slate-300);
+        --text-color2: var(--slate-400);
+        --button-color: black;
+        --border-color: var(--slate-500);
+        --item-background-color: black;
+        --progress-background: var(--slate-500);
     }
 }
-
-
-
 
 body {
     width: 100vw;
@@ -21,4 +38,3 @@ body {
     overflow: hidden;
     zoom: 100%;
 }
-

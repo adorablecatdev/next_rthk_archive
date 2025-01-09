@@ -1,14 +1,4 @@
-:root[data-theme="light"]{
-    --border-bottom: var(--slate-200);
-    --font-color: var(--slate-500);
-    --icon-color: var(--slate-500);
-}
-
-:root[data-theme="dark"]{
-    --border-bottom: var(--slate-500);
-    --font-color: var(--slate-300);
-    --icon-color: var(--slate-300);
-}
+@import "../../globals.css";
 
 .container {
     height: 60px;
@@ -46,7 +36,7 @@
 }
 
 .homeBtnText {
-    color: var(--font-color);
+    color: var(--text-color1);
     font-size: 18px;
     margin: 5px;
     font-weight: bold;
@@ -75,7 +65,7 @@
     justify-content: center;
     align-items: center;
     transition: all 0.2s ease;
-    color: var(--icon-color);
+    color: var(--text-color1);
 }
 
 
