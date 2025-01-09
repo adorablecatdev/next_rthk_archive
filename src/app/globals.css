@@ -1,6 +1,6 @@
 @import '../../src/app/utilities/Color.css';
 
-html[data-theme="light"] {
+:root {
     --background-color: var(--slate-50);
     --text-color1: var(--slate-500);
     --text-color2: var(--slate-400);
@@ -8,16 +8,6 @@ html[data-theme="light"] {
     --border-color: var(--slate-200);
     --item-background-color: white;
     --progress-background: var(--slate-200);
-}
-
-html[data-theme="dark"] {
-    --background-color: var(--slate-800);
-    --text-color1: var(--slate-300);
-    --text-color2: var(--slate-400);
-    --button-color: black;
-    --border-color: var(--slate-500);
-    --item-background-color: black;
-    --progress-background: var(--slate-500);
 }
 
 @media (prefers-color-scheme: dark) {
