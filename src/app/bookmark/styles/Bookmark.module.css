@@ -1,4 +1,4 @@
-:root [data-theme='light'] {
+:root[data-theme='light'] {
     --background-color: var(--slate-50);
     --text-color1: var(--slate-500);
     --text-color2: var(--slate-400);
@@ -8,7 +8,7 @@
     --progress-background: var(--slate-200);
 }
 
-:root [data-theme='dark'] {
+:root[data-theme='dark'] {
     --background-color: var(--slate-800);
     --text-color1: var(--slate-300);
     --text-color2: var(--slate-400);

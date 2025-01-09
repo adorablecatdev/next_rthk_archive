@@ -1,10 +1,10 @@
-:root [data-theme="light"]{
+:root[data-theme="light"]{
     --border-bottom: var(--slate-200);
     --font-color: var(--slate-500);
     --icon-color: var(--slate-500);
 }
 
-:root [data-theme="dark"]{
+:root[data-theme="dark"]{
     --border-bottom: var(--slate-500);
     --font-color: var(--slate-300);
     --icon-color: var(--slate-300);
