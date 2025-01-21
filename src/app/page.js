@@ -26,9 +26,9 @@ const Home = ({ }) =>
     }
 
     return (
-        <div data-theme={'light'} className={styles.container}>
-            <Navigation currentLocation={'home'} theme={'light'} set_theme={set_theme} />
-
+        <div data-theme={theme}  className={styles.container}>
+            <Navigation currentLocation={'home'} theme={theme} set_theme={set_theme} />
+{theme}
             <Fade in={showContent}>
                 <div className={styles.contentContainer}>
 
@@ -46,14 +46,14 @@ const Home = ({ }) =>
                     <div className={styles.rightContainer}>
                         <IconButton
                             router={router}
-                            navigateTo={'selectProgram'}
+                            navigateTo={'pages/selectProgram'}
                             icon={(<Icon.Broadcast size={30} className={styles.btnIcon} />)}
                             text={'選擇節目'}
                         />
 
                         <IconButton
                             router={router}
-                            navigateTo={'bookmark'}
+                            navigateTo={'pages/bookmark'}
                             icon={(<Icon.Bookmark size={30} className={styles.btnIcon} />)}
                             text={'收藏節目'}
                         />

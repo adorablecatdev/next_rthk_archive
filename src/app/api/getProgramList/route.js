@@ -1,8 +1,8 @@
 import axios from "axios";
 
-async function GET(req)
+async function POST(req)
 {
-    const { channel, segment } = req.query;
+   const { channel, segment } = await req.json();
 
     const timestamp = new Date().getTime();
     const rthkUrl = `https://www.rthk.hk/archive/archive_channel/${channel}_latest/${segment}?_t=${timestamp}`;
@@ -21,4 +21,4 @@ async function GET(req)
 }
 
 
-export { GET }
+export { POST }

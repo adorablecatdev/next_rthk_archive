@@ -1,9 +1,10 @@
 // import { Link, useNavigate } from "react-router-dom";
-import styles from "./styles/BookmarkItem.module.css";
+import { setStorageItem } from "@/app/utilities/LocalStorage";
+import styles from "./BookmarkItem.module.css";
 import * as Icon from "react-bootstrap-icons";
-import { setStorageItem } from "../utilities/LocalStorage";
+import Link from "next/link";
 
-const BookmarkItem = ({ theme, key, program, bookmarks, set_bookmarks }) =>
+const BookmarkItem = ({ theme, program, bookmarks, set_bookmarks }) =>
 {
     // const navigation = useNavigate();
 
@@ -27,11 +28,10 @@ const BookmarkItem = ({ theme, key, program, bookmarks, set_bookmarks }) =>
         <div
             data-theme={theme}
             className={styles.mainContainer}
-            key={key}
         >
             <Link
                 className={styles.leftContainer}
-                to={`/selectEpisode?channel=${program?.channel}&program=${program?.folder}&programName=${program?.title}`} state={{ program }}
+                href={`/pages/selectEpisode?channel=${program?.channel}&program=${program?.folder}&programName=${program?.title}`} state={{ program }}
             >
                 <div className={styles.channelContainer}>
                     {`${program?.channel}`}

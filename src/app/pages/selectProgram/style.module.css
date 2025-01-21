@@ -1,0 +1,93 @@
+@import "../../globals.css";
+
+.container {
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background-color: var(--background-color);
+}
+
+.contentContainer {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: calc(100dvh - 60px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+
+.radioButtonContainer {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    border-right: 1px solid var(--border-color);
+}
+
+.programList {
+    width: 80%;
+    overflow: auto;
+    height: calc(100dvh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+.programList::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+    border-radius: 4px;
+    border-radius: 4px;
+}
+
+.programList::-webkit-scrollbar-track {
+    background: var(--slate-100);
+    border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid var(--slate-200);
+}
+
+.programList::-webkit-scrollbar-thumb {
+    background: var(--slate-400);
+    border-radius: 4px;
+}
+
+.programList::-webkit-scrollbar-thumb:hover {
+    background: var(--slate-500);
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 800px) {
+    .contentContainer {
+        width: 100%;
+        margin-left: 0%;
+        margin-right: 0%;
+        height: calc(100dvh - 50px);
+        flex-wrap: wrap;
+    }
+
+    .radioButtonContainer {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        border-right: 0px solid black;
+    }
+
+    .programList {
+        width: 100%;
+        height: calc(100dvh - 100px);
+        padding: 5px;
+    }
+}

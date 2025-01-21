@@ -1,4 +1,4 @@
-/* @import "./globals.css"; */
+@import "./utilities/Color.css";
 
 .container {
     width: 100%;
@@ -22,7 +22,7 @@
     flex-wrap: nowrap;
 }
 
-.leftContainer {
+.leftContainer{
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@
     align-items: center;
 }
 
-.rightContainer {
+.rightContainer{
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@
     align-items: center;
 }
 
-.logo {
+.logo{
     width: 150px;
     height: auto;
     aspect-ratio: 1;
@@ -61,7 +61,7 @@
     margin-bottom: 5px;
 }
 
-.btnContainer {
+.btnContainer{
     width: 50%;
     display: flex;
     flex-direction: row;
@@ -74,18 +74,18 @@
     background-color: var(--button-color);
 }
 
-.btnIcon {
+.btnIcon{
     color: var(--text-color1);
     margin: 5px;
 }
 
-.btnText {
+.btnText{
     color: var(--text-color1);
     font-size: 20px;
     margin: 5px;
 }
 
-.btnContainer:hover {
+.btnContainer:hover{
     border: 1px solid var(--sky-300);
     box-shadow: 0 0 10px var(--sky-300);
     cursor: pointer;
@@ -126,13 +126,13 @@
         margin-bottom: 10px;
         flex-wrap: wrap;
     }
-
-    .btnContainer {
+    
+    .btnContainer{
         padding: 10px 20px 10px 20px;
         width: 70%;
     }
 
-    .leftContainer {
+    .leftContainer{
         height: 50%;
         width: 100%;
         display: flex;
@@ -140,8 +140,8 @@
         justify-content: flex-end;
         align-items: center;
     }
-
-    .rightContainer {
+    
+    .rightContainer{
         width: 100%;
         height: 50%;
         display: flex;
@@ -149,5 +149,5 @@
         justify-content: center;
         align-items: center;
     }
-
+    
 }

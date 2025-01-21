@@ -1,9 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+
 import styles from "./styles/ProgramItem.module.css";
 import * as Icon from "react-bootstrap-icons";
 import { setStorageItem } from "../utilities/LocalStorage";
+import Link from "next/link";
 
-const ProgramItem = ({ theme, key, program, bookmarks, set_bookmarks }) =>
+const ProgramItem = ({ theme, key_in, program, bookmarks, set_bookmarks }) =>
 {
     async function onClickBookmarkBtn(e, program)
     {
@@ -24,12 +25,12 @@ const ProgramItem = ({ theme, key, program, bookmarks, set_bookmarks }) =>
     return (
         <div
             data-theme={theme}
-            key={key}
+            key={key_in}
             className={styles.mainContainer}
         >
             <Link
                 className={styles.leftContainer}
-                to={`/selectEpisode?channel=${program?.channel}&program=${program?.folder}&programName=${program?.title}`} state={{ program }}
+                href={`/pages/selectEpisode?channel=${program?.channel}&program=${program?.folder}&programName=${program?.title}`} state={{ program }}
             >
                 <div className={styles.timeContainer}>
                     {`${program?.latestDate}`}
