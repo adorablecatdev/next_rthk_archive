@@ -32,7 +32,7 @@ const SelectEpisode = ({ theme, set_theme }) =>
     const isCancelDownloadRef = useRef({});
     const isCancelLoadingRef = useRef(false);
 
-    useEffect(() =>
+    useEffect(() => 
     {
         getEpisodeList();
 
@@ -111,7 +111,6 @@ const SelectEpisode = ({ theme, set_theme }) =>
                 });
 
                 tryCount += 7;
-
                 // Break if we've tried too many times
                 if (tryCount > 35)
                 {  // Arbitrary limit to prevent infinite loops
@@ -122,9 +121,11 @@ const SelectEpisode = ({ theme, set_theme }) =>
             if (new_episodes.length === 0)
             {
                 setHasMore(false);
-            } else
+            }
+            else
             {
-                setEpisodes(prevList => [...prevList, ...new_episodes]);
+                const prevList = [...episodes];
+                setEpisodes([...prevList, ...new_episodes]);
                 setDaysBefore(daysBefore + tryCount);
             }
 
@@ -214,7 +215,6 @@ const SelectEpisode = ({ theme, set_theme }) =>
                                 downloadProgress={downloadProgress}
                             />
                         )}
-
 
                         {episodes && episodes.length > 0 && (hasMore || showLoading) &&
                             <LoadMoreButton
