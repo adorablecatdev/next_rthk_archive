@@ -58,8 +58,7 @@ const SelectProgram = ({ }) =>
             // await new Promise(r => setTimeout(r, 5000));
             const segment = reset ? 1 : loadSegment;
 
-            const rthkUrl = `http://localhost:3000/api/getProgramList`;
-
+            const rthkUrl = `/api/getProgramList`;
 
             const result = await axios.post(rthkUrl, {
                 "channel": selectedStation_in,
