@@ -1,6 +1,6 @@
 /* @import '../../src/app/utilities/Color.css'; */
 
-body {
+.body {
   --slate-50: #F8FAFC;
   --slate-100: #F1F5F9;
   --slate-200: #E2E8F0;
@@ -109,7 +109,7 @@ body[data-theme='dark'] {
   color: white;
 }
 
-body {
+.body {
   width: 100vw;
   height: 100dvh;
   overflow: hidden;
