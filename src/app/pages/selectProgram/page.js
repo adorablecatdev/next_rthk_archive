@@ -36,7 +36,6 @@ const SelectProgram = ({ }) =>
 
     async function initialize()
     {
-
         let new_selectedChannel = '';
         if (searchParams.has('channel'))
             new_selectedChannel = searchParams.get('channel');
@@ -46,6 +45,9 @@ const SelectProgram = ({ }) =>
         set_selectedStation(new_selectedChannel)
 
         getProgramList(true, new_selectedChannel);
+
+        const new_bookmarks = await getStorageItem('bookmarks');
+        set_bookmarks(new_bookmarks);
     }
 
     async function getProgramList(reset = false, selectedStation_in)

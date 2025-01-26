@@ -13,6 +13,8 @@ import LoadMoreButton from "../../components/LoadMoreButton";
 import Error from "../../components/Error";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "@/app/utilities/ThemeContext";
+import * as Icon from "react-bootstrap-icons";
+import { getStorageItem, setStorageItem } from "@/app/utilities/LocalStorage";
 
 const SelectEpisode = ({ }) =>
 {
@@ -22,6 +24,7 @@ const SelectEpisode = ({ }) =>
     const [channel, set_channel] = useState('');
     const [programName, set_programName] = useState('');
     const [program, set_program] = useState('');
+    const [producer, set_producer] = useState('');
 
     const [episodes, setEpisodes] = useState([]);
     const [daysBefore, setDaysBefore] = useState(0);
@@ -33,11 +36,13 @@ const SelectEpisode = ({ }) =>
     const isCancelDownloadRef = useRef({});
     const isCancelLoadingRef = useRef(false);
 
+    const [bookmarks, set_bookmarks] = useState({});
+
     const { theme, toggleTheme } = useTheme();
 
     useEffect(() => 
     {
-        getEpisodeList();
+        initialize();
 
         return () =>
         {
@@ -48,6 +53,14 @@ const SelectEpisode = ({ }) =>
             });
         };
     }, []);
+
+    async function initialize()
+    {
+        await getEpisodeList();
+
+        const new_bookmarks = await getStorageItem('bookmarks');
+        set_bookmarks(new_bookmarks);
+    }
 
     async function checkUrl(url)
     {
@@ -73,10 +86,12 @@ const SelectEpisode = ({ }) =>
             let new_program = searchParams.has('program') ? searchParams.get('program') : '';
             let new_channel = searchParams.has('channel') ? searchParams.get('channel') : '';
             let new_programName = searchParams.has('programName') ? searchParams.get('programName') : '';
+            let new_producer = searchParams.has('producer') ? searchParams.get('producer') : '';
 
             set_program(new_program);
             set_channel(new_channel);
             set_programName(new_programName);
+            set_producer(new_producer);
 
             const new_episodes = [];
             let tryCount = 0;
@@ -191,6 +206,28 @@ const SelectEpisode = ({ }) =>
         })
     }
 
+    async function onClickBookmarkBtn()
+    {
+        const new_bookmarks = { ...bookmarks };
+
+        if (program in new_bookmarks)
+            delete new_bookmarks[program];
+        else
+        {
+            new_bookmarks[program] = {
+                channel: channel,
+                title: programName,
+                folder: program,
+                producer: producer
+            }
+        }
+
+
+        set_bookmarks(new_bookmarks);
+
+        await setStorageItem('bookmarks', new_bookmarks);
+    }
+
     return (
 
         <div data-theme={theme} className={styles.container}>
@@ -202,8 +239,15 @@ const SelectEpisode = ({ }) =>
 
                     {/* PROGRAM DETAILS */}
                     <div className={styles.programDetails}>
-                        <div className={styles.channel}>{channel}</div>
-                        <div className={styles.programName}>{programName}</div>
+                        <div className={styles.programDetailsText}>
+                            <div className={styles.channel}>{channel}</div>
+                            <div className={styles.programName}>{programName}</div>
+                        </div>
+
+                        {program in bookmarks ?
+                            <Icon.BookmarkFill size={30} className={styles.bookmarkBtn} onClick={(e) => { onClickBookmarkBtn(); }}/> :
+                            <Icon.Bookmark size={30} className={styles.bookmarkBtn} onClick={(e) => { onClickBookmarkBtn(); }}/>
+                        }
                     </div>
 
                     {/* EPISODE LIST */}

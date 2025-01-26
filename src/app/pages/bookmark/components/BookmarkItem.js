@@ -31,7 +31,7 @@ const BookmarkItem = ({ theme, program, bookmarks, set_bookmarks }) =>
         >
             <Link
                 className={styles.leftContainer}
-                href={`/pages/selectEpisode?channel=${program?.channel}&program=${program?.folder}&programName=${program?.title}`} state={{ program }}
+                href={`/pages/selectEpisode?channel=${program?.channel}&program=${program?.folder}&programName=${program?.title}&producer=${program?.producer}`} state={{ program }}
             >
                 <div className={styles.channelContainer}>
                     {`${program?.channel}`}

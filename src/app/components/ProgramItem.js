@@ -15,7 +15,15 @@ const ProgramItem = ({ theme, key_in, program, bookmarks, set_bookmarks }) =>
         if (program?.folder in new_bookmarks)
             delete new_bookmarks[program?.folder];
         else
-            new_bookmarks[program?.folder] = program;
+        {
+            new_bookmarks[program?.folder] = {
+                channel: program?.channel,
+                title: program?.programName,
+                folder: program?.program,
+                producer: program?.producer
+            };
+        }
+           
 
         set_bookmarks(new_bookmarks);
 
@@ -30,7 +38,7 @@ const ProgramItem = ({ theme, key_in, program, bookmarks, set_bookmarks }) =>
         >
             <Link
                 className={styles.leftContainer}
-                href={`/pages/selectEpisode?channel=${program?.channel}&program=${program?.folder}&programName=${program?.title}`} state={{ program }}
+                href={`/pages/selectEpisode?channel=${program?.channel}&program=${program?.folder}&programName=${program?.title}&producer=${program?.producer}`} state={{ program }}
             >
                 <div className={styles.timeContainer}>
                     {`${program?.latestDate}`}
@@ -51,7 +59,6 @@ const ProgramItem = ({ theme, key_in, program, bookmarks, set_bookmarks }) =>
                     <Icon.BookmarkFill size={30} className={styles.bookmarkBtn} /> :
                     <Icon.Bookmark size={30} className={styles.bookmarkBtn} />
                 }
-
             </div>
         </div>
     )

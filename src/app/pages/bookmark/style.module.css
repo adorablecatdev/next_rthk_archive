@@ -1,11 +1,11 @@
 .container[data-theme='light'] {
     --background-color: var(--slate-50);
-    --text-color1: var(--slate-500);
-    --text-color2: var(--slate-400);
+    --text-color1: var(--slate-600);
+    --text-color2: var(--slate-500);
     --button-color: white;
     --border-color: var(--slate-200);
     --item-background-color: white;
-    --progress-background: var(--slate-200);
+    --progress-background: var(--slate-300);
     width: 100%;
     height: 100dvh;
     overflow: hidden;
