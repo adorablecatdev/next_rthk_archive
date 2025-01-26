@@ -18,8 +18,8 @@ const ProgramItem = ({ theme, key_in, program, bookmarks, set_bookmarks }) =>
         {
             new_bookmarks[program?.folder] = {
                 channel: program?.channel,
-                title: program?.programName,
-                folder: program?.program,
+                title: program?.title,
+                folder: program?.folder,
                 producer: program?.producer
             };
         }
