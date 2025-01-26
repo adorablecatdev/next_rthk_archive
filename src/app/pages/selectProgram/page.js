@@ -11,13 +11,15 @@ import ChannelButton from "../../components/ChannelButton";
 import LoadMoreButton from "../../components/LoadMoreButton";
 import Error from "../../components/Error";
 import { useRouter, useSearchParams } from "next/navigation";
+import { getStorageItem } from "@/app/utilities/LocalStorage";
+import { useTheme } from "@/app/utilities/ThemeContext";
 
 const SelectProgram = ({ }) =>
 {
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    const [theme, set_theme] = useState('light');
+    const { theme, toggleTheme } = useTheme();
     const [showContent, set_showContent] = useState(false);
     const [showLoading, set_showLoading] = useState(false);
     const [selectedStation, set_selectedStation] = useState('radio1');
@@ -32,9 +34,9 @@ const SelectProgram = ({ }) =>
         initialize();
     }, [])
 
-
     async function initialize()
     {
+
         let new_selectedChannel = '';
         if (searchParams.has('channel'))
             new_selectedChannel = searchParams.get('channel');
@@ -123,7 +125,7 @@ const SelectProgram = ({ }) =>
     return (
 
         <div data-theme={theme} className={styles.container}>
-            <Navigation currentLocation={'selectProgram'} theme={theme} set_theme={set_theme} />
+            <Navigation currentLocation={'selectProgram'} theme={theme} toggleTheme={toggleTheme} />
             <Loading showLoading={showLoading} />
 
             <Fade in={showContent}>

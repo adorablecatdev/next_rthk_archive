@@ -12,8 +12,9 @@ import { Fade, Spinner } from "react-bootstrap";
 import LoadMoreButton from "../../components/LoadMoreButton";
 import Error from "../../components/Error";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTheme } from "@/app/utilities/ThemeContext";
 
-const SelectEpisode = ({ theme, set_theme }) =>
+const SelectEpisode = ({ }) =>
 {
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -31,6 +32,8 @@ const SelectEpisode = ({ theme, set_theme }) =>
     const [downloadProgress, set_downloadProgress] = useState({});
     const isCancelDownloadRef = useRef({});
     const isCancelLoadingRef = useRef(false);
+
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => 
     {
@@ -191,7 +194,7 @@ const SelectEpisode = ({ theme, set_theme }) =>
     return (
 
         <div data-theme={theme} className={styles.container}>
-            <Navigation currentLocation={'selectProgram'} theme={theme} set_theme={set_theme} />
+            <Navigation currentLocation={'selectProgram'} theme={theme} toggleTheme={toggleTheme} />
             <Loading showLoading={showLoading} />
 
             <Fade in={showContent}>

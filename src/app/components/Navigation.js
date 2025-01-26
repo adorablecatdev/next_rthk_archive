@@ -1,15 +1,18 @@
 import { useRouter } from "next/navigation";
 import styles from "./styles/Navigation.module.css";
 import * as Icon from "react-bootstrap-icons";
+import { setStorageItem } from "../utilities/LocalStorage";
 
-const Navigation = ({ theme, set_theme }) =>
+const Navigation = ({ theme, toggleTheme }) =>
 {
     const router = useRouter();
 
-    const toggleTheme = () =>
-    {
-        set_theme(theme === 'light' ? 'dark' : 'light');
-    };
+    // const toggleTheme = () =>
+    // {
+    //     const new_theme = theme === 'light' ? 'dark' : 'light';
+    //     set_theme(new_theme);
+    //     setStorageItem('theme', new_theme);
+    // };
 
     return (
         <div data-theme={theme} className={styles.container}>
@@ -21,10 +24,10 @@ const Navigation = ({ theme, set_theme }) =>
             <div className={styles.rightContainer}>
                 <IconTheme
                     icon={theme == 'light' ? (<Icon.Moon size={30} />) : (<Icon.Sun size={30} />)}
-                    onClick={() => { toggleTheme() }}
+                    onClick={toggleTheme}
                 />
-                <IconButton router={router} navigateTo={"bookmark"} icon={(<Icon.Bookmark size={30} />)} />
-                <IconButton router={router} navigateTo={"setting"} icon={(<Icon.Gear size={30} />)} />
+                <IconButton router={router} navigateTo={"pages/bookmark"} icon={(<Icon.Bookmark size={30} />)} />
+                <IconButton router={router} navigateTo={"pages/setting"} icon={(<Icon.Gear size={30} />)} />
             </div>
 
         </div>

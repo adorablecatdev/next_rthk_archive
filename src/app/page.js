@@ -8,12 +8,16 @@ import { Fade } from "react-bootstrap";
 import Navigation from "./components/Navigation";
 import * as Icon from "react-bootstrap-icons";
 import { useRouter } from 'next/navigation';
+import { getStorageItem } from "./utilities/LocalStorage";
+import { useTheme } from "./utilities/ThemeContext";
 
 const Home = ({ }) =>
 {
     const router = useRouter();
-    const [theme, set_theme] = useState('light');
+    // const [theme, set_theme] = useState('light');
     const [showContent, set_showContent] = useState(false);
+
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() =>
     {
@@ -22,13 +26,19 @@ const Home = ({ }) =>
 
     async function initialize()
     {
+     
+        const new_theme = await getStorageItem('theme');
+        // console.log(new_theme)
+        // if (new_theme)
+        // {
+        //     set_theme(new_theme);
+        // }
         set_showContent(true);
     }
 
     return (
-        <div data-theme={theme}  className={styles.container}>
-            <Navigation currentLocation={'home'} theme={theme} set_theme={set_theme} />
-{theme}
+        <div data-theme={theme} className={styles.container}>
+            <Navigation currentLocation={'home'} theme={theme} toggleTheme={toggleTheme} />
             <Fade in={showContent}>
                 <div className={styles.contentContainer}>
 

@@ -6,10 +6,11 @@ import styles from "./style.module.css";
 import { getStorageItem } from "../../utilities/LocalStorage";
 import { Fade } from "react-bootstrap";
 import BookmarkItem from "./components/BookmarkItem";
+import { useTheme } from "@/app/utilities/ThemeContext";
 
-const Bookmark = ({  }) =>
+const Bookmark = ({ }) =>
 {
-    const [theme, set_theme] = useState('light');
+    const { theme, toggleTheme } = useTheme();
     const [showContent, set_showContent] = useState(false);
     const [bookmarks, set_bookmarks] = useState({});
 
@@ -27,7 +28,7 @@ const Bookmark = ({  }) =>
 
     return (
         <div data-theme={theme} className={styles.container}>
-            <Navigation currentLocation={'bookmark'} theme={theme} set_theme={set_theme}/>
+            <Navigation currentLocation={'bookmark'} theme={theme} toggleTheme={toggleTheme} />
 
             <Fade in={showContent}>
                 <div className={styles.contentContainer}>
@@ -38,7 +39,7 @@ const Bookmark = ({  }) =>
 
                     <div className={styles.bookmarkList}>
                         {bookmarks && Object.entries(bookmarks).map(([key, bookmark]) =>
-                            <BookmarkItem  theme={theme} key={key} program={bookmark} bookmarks={bookmarks} set_bookmarks={set_bookmarks} />
+                            <BookmarkItem theme={theme} key={key} program={bookmark} bookmarks={bookmarks} set_bookmarks={set_bookmarks} />
                         )}
                     </div>
 
