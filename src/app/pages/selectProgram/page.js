@@ -118,7 +118,7 @@ const SelectProgram = ({ }) =>
 
         const params = new URLSearchParams(searchParams);
         params.set('channel', channel_in);
-        router.replace(`/selectProgram?${params.toString()}`);
+        router.replace(`/pages/selectProgram?${params.toString()}`);
     }
 
     return (
