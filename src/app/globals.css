@@ -1,6 +1,6 @@
 /* @import '../../src/app/utilities/Color.css'; */
 
-/* :root {
+:root {
   --slate-50: #F8FAFC;
   --slate-100: #F1F5F9;
   --slate-200: #E2E8F0;
@@ -56,9 +56,9 @@
   --yellow-800: #854D0E;
   --yellow-900: #713F12;
   --yellow-950: #422006;
-} */
+}
 
-[data-theme='light'] {
+/* .body[data-theme='light'] {
   --background-color: #F8FAFC;
   --text-color1: #64748B;
   --text-color2: #94A3B8;
@@ -68,7 +68,7 @@
   --progress-background: #E2E8F0;
 }
 
-[data-theme='dark'] {
+.body[data-theme='dark'] {
   --background-color: #1E293B;
   --text-color1: #CBD5E1;
   --text-color2: #94A3B8;
@@ -76,9 +76,9 @@
   --border-color: #64748B;
   --item-background-color: black;
   --progress-background: #64748B;
-}
+} */
 
-/* [data-theme='light'] {
+[data-theme='light'] {
   --background-color: var(--slate-50);
   --text-color1: var(--slate-500);
   --text-color2: var(--slate-400);
@@ -96,14 +96,18 @@
   --border-color: var(--slate-500);
   --item-background-color: black;
   --progress-background: var(--slate-500);
-} */
-
-/* Using the colors */
-.container {
-  background-color: var(--background);
-  color: var(--text);
 }
 
+/* Using the colors */
+.container[data-theme='light'] {
+  background-color: #F8FAFC;
+  color: black;
+}
+
+.container[data-theme='dark'] {
+  background-color: #1E293B;
+  color: white;
+}
 
 body {
   width: 100vw;

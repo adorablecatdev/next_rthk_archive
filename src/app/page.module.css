@@ -1,9 +1,17 @@
-.container {
+.container[data-theme='light'] {
     width: 100%;
     height: 100dvh;
     overflow: hidden;
-    background-color: var(--background-color);
+    background-color: #F8FAFC;
 }
+
+.container[data-theme='dark'] {
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background-color: #1E293B;
+}
+
 
 .contentContainer {
     width: 80%;
