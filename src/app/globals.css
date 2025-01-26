@@ -1,6 +1,6 @@
 /* @import '../../src/app/utilities/Color.css'; */
 
-:root {
+body {
   --slate-50: #F8FAFC;
   --slate-100: #F1F5F9;
   --slate-200: #E2E8F0;
@@ -78,7 +78,7 @@
   --progress-background: #64748B;
 } */
 
-[data-theme='light'] {
+/* body[data-theme='light'] {
   --background-color: var(--slate-50);
   --text-color1: var(--slate-500);
   --text-color2: var(--slate-400);
@@ -88,7 +88,7 @@
   --progress-background: var(--slate-200);
 }
 
-[data-theme='dark'] {
+body[data-theme='dark'] {
   --background-color: var(--slate-800);
   --text-color1: var(--slate-300);
   --text-color2: var(--slate-400);
@@ -96,7 +96,7 @@
   --border-color: var(--slate-500);
   --item-background-color: black;
   --progress-background: var(--slate-500);
-}
+} */
 
 /* Using the colors */
 .container[data-theme='light'] {

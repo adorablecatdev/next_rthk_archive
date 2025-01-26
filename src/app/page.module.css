@@ -1,17 +1,30 @@
 .container[data-theme='light'] {
+    --background-color: var(--slate-50);
+    --text-color1: var(--slate-500);
+    --text-color2: var(--slate-400);
+    --button-color: white;
+    --border-color: var(--slate-200);
+    --item-background-color: white;
+    --progress-background: var(--slate-200);
     width: 100%;
     height: 100dvh;
     overflow: hidden;
-    background-color: #F8FAFC;
+    background-color: var(--background-color);
 }
 
-.container[data-theme='dark'] {
+.container[data-theme='dark']{
+    --background-color: var(--slate-800);
+    --text-color1: var(--slate-300);
+    --text-color2: var(--slate-400);
+    --button-color: black;
+    --border-color: var(--slate-500);
+    --item-background-color: black;
+    --progress-background: var(--slate-500);
     width: 100%;
     height: 100dvh;
     overflow: hidden;
-    background-color: #1E293B;
+    background-color: var(--slate-800);
 }
-
 
 .contentContainer {
     width: 80%;
@@ -28,7 +41,7 @@
     flex-wrap: nowrap;
 }
 
-.leftContainer{
+.leftContainer {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -36,7 +49,7 @@
     align-items: center;
 }
 
-.rightContainer{
+.rightContainer {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -44,7 +57,7 @@
     align-items: center;
 }
 
-.logo{
+.logo {
     width: 150px;
     height: auto;
     aspect-ratio: 1;
@@ -67,7 +80,7 @@
     margin-bottom: 5px;
 }
 
-.btnContainer{
+.btnContainer {
     width: 50%;
     display: flex;
     flex-direction: row;
@@ -80,18 +93,18 @@
     background-color: var(--button-color);
 }
 
-.btnIcon{
+.btnIcon {
     color: var(--text-color1);
     margin: 5px;
 }
 
-.btnText{
+.btnText {
     color: var(--text-color1);
     font-size: 20px;
     margin: 5px;
 }
 
-.btnContainer:hover{
+.btnContainer:hover {
     border: 1px solid var(--sky-300);
     box-shadow: 0 0 10px var(--sky-300);
     cursor: pointer;
@@ -132,13 +145,13 @@
         margin-bottom: 10px;
         flex-wrap: wrap;
     }
-    
-    .btnContainer{
+
+    .btnContainer {
         padding: 10px 20px 10px 20px;
         width: 70%;
     }
 
-    .leftContainer{
+    .leftContainer {
         height: 50%;
         width: 100%;
         display: flex;
@@ -146,8 +159,8 @@
         justify-content: flex-end;
         align-items: center;
     }
-    
-    .rightContainer{
+
+    .rightContainer {
         width: 100%;
         height: 50%;
         display: flex;
@@ -155,5 +168,5 @@
         justify-content: center;
         align-items: center;
     }
-    
+
 }
