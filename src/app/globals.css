@@ -56,14 +56,6 @@
   --yellow-800: #854D0E;
   --yellow-900: #713F12;
   --yellow-950: #422006;
-  --background-color: var(--slate-50);
-  --text-color1: var(--slate-500);
-  --text-color2: var(--slate-400);
-  --button-color: white;
-  --border-color: var(--slate-200);
-  --item-background-color: white;
-  --progress-background: var(--slate-200);
-
 }
 
 [data-theme='light'] {
