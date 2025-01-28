@@ -6,6 +6,7 @@
     --border-color: var(--slate-200);
     --item-background-color: white;
     --progress-background: var(--slate-300);
+    --navigation-shadow: rgba(0, 0, 0, 0.1);
     width: 100%;
     height: 100dvh;
     overflow: hidden;
@@ -20,11 +21,12 @@
     --border-color: var(--slate-500);
     --item-background-color: black;
     --progress-background: var(--slate-500);
+    --navigation-shadow: rgba(255, 255, 255, 0.1);
     width: 100%;
     height: 100dvh;
     overflow: hidden;
     background-color: var(--slate-800);
-}
+} 
 
 .contentContainer {
     width: 80%;

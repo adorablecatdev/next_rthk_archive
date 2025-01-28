@@ -26,13 +26,6 @@ const Home = ({ }) =>
 
     async function initialize()
     {
-     
-        const new_theme = await getStorageItem('theme');
-        // console.log(new_theme)
-        // if (new_theme)
-        // {
-        //     set_theme(new_theme);
-        // }
         set_showContent(true);
     }
 

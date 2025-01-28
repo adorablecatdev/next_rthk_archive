@@ -27,7 +27,7 @@ const Navigation = ({ theme, toggleTheme }) =>
                     onClick={toggleTheme}
                 />
                 <IconButton router={router} navigateTo={"pages/bookmark"} icon={(<Icon.Bookmark size={30} />)} />
-                <IconButton router={router} navigateTo={"pages/setting"} icon={(<Icon.Gear size={30} />)} />
+                {/* <IconButton router={router} navigateTo={"pages/setting"} icon={(<Icon.Gear size={30} />)} /> */}
             </div>
 
         </div>
