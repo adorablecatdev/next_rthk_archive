@@ -8,7 +8,7 @@ import { Fade } from "react-bootstrap";
 import Navigation from "./components/Navigation";
 import * as Icon from "react-bootstrap-icons";
 import { useRouter } from 'next/navigation';
-
+import { getStorageItem } from "./utilities/LocalStorage";
 import { useTheme } from "./utilities/ThemeContext";
 
 const NotFound = ({ }) =>
