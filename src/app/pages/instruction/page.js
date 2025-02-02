@@ -4,7 +4,7 @@ import Loading from "@/app/components/Loading";
 import Navigation from "@/app/components/Navigation";
 import { useTheme } from "@/app/utilities/ThemeContext";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Fade } from "react-bootstrap";
 import styles from './style.module.css';
 
