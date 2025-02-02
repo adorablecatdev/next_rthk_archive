@@ -9,7 +9,7 @@
     --navigation-shadow: rgba(0, 0, 0, 0.1);
     width: 100%;
     height: 100dvh;
-    overflow: hidden;
+    overflow: auto;
     background-color: var(--background-color);
 }
 
@@ -24,47 +24,75 @@
     --navigation-shadow: rgba(255, 255, 255, 0.1);
     width: 100%;
     height: 100dvh;
-    overflow: hidden;
+    overflow: auto;
     background-color: var(--slate-800);
 } 
 
 .contentContainer {
     width: 80%;
-    height: calc(100dvh - 80px);
-    border-radius: 20px;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    height: calc(100dvh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.howToListenText{
+    width: 100%;
+    font-size: 18px;
+    color: var(--text-color1);
+    padding: 20px;
+}
+
+.cardContainer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: nowrap;
 }
 
-.leftContainer {
-    width: 50%;
+.howToListenCard{
+    width: 33%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.rightContainer {
+.howToListenCardOsImage{
     width: 50%;
+}
+
+.btnContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 20px 10px 20px;
+    margin: 10px;
+    background-color: var(--button-color);
+}
+
+.btnContainer:hover {
+    border: 1px solid var(--sky-300);
+    box-shadow: 0 0 10px var(--sky-300);
+    cursor: pointer;
+}
+
+.aboutContainer{
+    width: 100%;
+    color: var(--text-color1);
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.logo {
-    width: 150px;
-    height: auto;
-    aspect-ratio: 1;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    text-align: center;
 }
 
 .header1 {
@@ -80,28 +108,6 @@
     color: var(--text-color2);
     margin-top: 5px;
     margin-bottom: 5px;
-}
-
-.btnContainer {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px 20px 20px 20px;
-    margin: 10px;
-    background-color: var(--button-color);
-    color: var(--text-color1);
-    font-size: 20px;
-    margin: 5px;
-}
-
-.btnContainer:hover {
-    border: 1px solid var(--sky-300);
-    box-shadow: 0 0 10px var(--sky-300);
-    cursor: pointer;
 }
 
 .contentContainer::-webkit-scrollbar {
@@ -130,37 +136,24 @@
 
 @media screen and (max-width: 800px) {
     .contentContainer {
-        width: 95%;
-        height: calc(100dvh - 70px);
-        border-radius: 15px;
-        margin-left: 2.5%;
-        margin-right: 2.5%;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        flex-wrap: wrap;
-    }
-
-    .btnContainer {
-        padding: 10px 20px 10px 20px;
-        width: 70%;
-    }
-
-    .leftContainer {
-        height: 50%;
         width: 100%;
+        margin-left: 0%;
+        margin-right: 0%;
+        height: calc(100dvh - 50px);
+    }
+
+    .cardContainer{
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: flex-start;
         align-items: center;
     }
-
-    .rightContainer {
+    
+    .howToListenCard{
         width: 100%;
-        height: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-
 }

@@ -10,6 +10,7 @@ import * as Icon from "react-bootstrap-icons";
 import { useRouter } from 'next/navigation';
 import { getStorageItem } from "./utilities/LocalStorage";
 import { useTheme } from "./utilities/ThemeContext";
+import * as Icons from "react-bootstrap-icons";
 
 const Home = ({ }) =>
 {
@@ -43,6 +44,15 @@ const Home = ({ }) =>
                         <div className={styles.header1}> 香港電台節目重溫 </div>
 
                         <div className={styles.header2}> 此網站內容均來自 rthk.hk </div>
+
+                        <div className={styles.header2}> 版本：1.0.0 </div>
+
+                        <div className={styles.header2}>
+                            Copyright © 2025 Adorable Cat Dev
+                            <a href="mailto:adorablecatdev@gmail.com">
+                                <Icons.EnvelopeAt size={25} style={{ marginLeft: 10 }} />
+                            </a>
+                        </div>
                     </div>
 
 
@@ -50,15 +60,22 @@ const Home = ({ }) =>
                         <IconButton
                             router={router}
                             navigateTo={'pages/selectProgram'}
-                            icon={(<Icon.Broadcast size={30} className={styles.btnIcon} />)}
+                            icon={(<Icon.Broadcast size={30} style={{ marginRight: '5px' }} />)}
                             text={'選擇節目'}
                         />
 
                         <IconButton
                             router={router}
                             navigateTo={'pages/bookmark'}
-                            icon={(<Icon.Bookmark size={30} className={styles.btnIcon} />)}
+                            icon={(<Icon.Bookmark size={30} style={{ marginRight: '5px' }} />)}
                             text={'收藏節目'}
+                        />
+
+                        <IconButton
+                            router={router}
+                            navigateTo={'pages/instruction'}
+                            icon={(<Icon.QuestionCircle size={30} style={{ marginRight: '5px' }} />)}
+                            text={'如何收聽'}
                         />
                     </div>
 
@@ -75,9 +92,7 @@ const IconButton = ({ router, navigateTo, icon, text }) =>
     return (
         <div className={styles.btnContainer} onClick={() => { router.push(`/${navigateTo}`) }}>
             {icon}
-            <div className={styles.btnText}>
-                {text}
-            </div>
+            {text}
         </div>
     )
 }
