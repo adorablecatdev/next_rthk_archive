@@ -7,9 +7,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Fade } from "react-bootstrap";
 import styles from './style.module.css';
-import * as Icons from "react-bootstrap-icons";
 
-const Page = ({ }) =>
+const Instruction = ({ }) =>
 {
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -75,7 +74,16 @@ const Page = ({ }) =>
     )
 }
 
-export default Page;
+const Com = ({ }) =>
+{
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Instruction />
+        </Suspense>
+    )
+}
+
+export default Com;
 
 const Button = ({ router, navigateTo, text }) =>
 {
