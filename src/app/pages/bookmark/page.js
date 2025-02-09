@@ -7,6 +7,7 @@ import { getStorageItem } from "../../utilities/LocalStorage";
 import { Fade } from "react-bootstrap";
 import BookmarkItem from "./components/BookmarkItem";
 import { useTheme } from "@/app/utilities/ThemeContext";
+import * as Icons from "react-bootstrap-icons";
 
 const Bookmark = ({ }) =>
 {
@@ -37,11 +38,20 @@ const Bookmark = ({ }) =>
                         收藏節目
                     </div>
 
-                    <div className={styles.bookmarkList}>
-                        {bookmarks && Object.entries(bookmarks).map(([key, bookmark]) =>
-                            <BookmarkItem theme={theme} key={key} program={bookmark} bookmarks={bookmarks} set_bookmarks={set_bookmarks} />
-                        )}
-                    </div>
+                    {Object.entries(bookmarks).length > 0 &&
+                        <div className={styles.bookmarkList}>
+                            {bookmarks && Object.entries(bookmarks).map(([key, bookmark]) =>
+                                <BookmarkItem theme={theme} key={key} program={bookmark} bookmarks={bookmarks} set_bookmarks={set_bookmarks} />
+                            )}
+                        </div>
+                    }
+
+                    {Object.entries(bookmarks).length == 0 &&
+                        <div className={styles.noBookmarkAlert}>
+                            <Icons.BookmarkX size={60} className={styles.noBookmarkIcon}/>
+                                <div className={styles.noBookmarkText}>沒有收藏節目</div>
+                        </div>
+                    }
 
                 </div>
             </Fade>
