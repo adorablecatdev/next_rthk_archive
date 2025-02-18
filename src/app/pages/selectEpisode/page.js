@@ -32,6 +32,8 @@ const SelectEpisode = ({ }) =>
 
     const [showContent, set_showContent] = useState(false);
     const [showLoading, set_showLoading] = useState(false);
+    const [isLoading5, set_isLoading5] = useState(false);
+    const [isLoading10, set_isLoading10] = useState(false);
     const [downloadProgress, set_downloadProgress] = useState({});
     const isCancelDownloadRef = useRef({});
     const isCancelLoadingRef = useRef(false);
@@ -56,7 +58,7 @@ const SelectEpisode = ({ }) =>
 
     async function initialize()
     {
-        await getEpisodeList();
+        await getEpisodeList(5);
 
         const new_bookmarks = await getStorageItem('bookmarks');
         set_bookmarks(new_bookmarks);
@@ -76,7 +78,7 @@ const SelectEpisode = ({ }) =>
         }
     }
 
-    async function getEpisodeList()
+    async function getEpisodeList(getCount)
     {
         if (showLoading) return;
 
@@ -96,7 +98,7 @@ const SelectEpisode = ({ }) =>
             const new_episodes = [];
             let tryCount = 0;
 
-            while (new_episodes.length < 5)
+            while (new_episodes.length < getCount)
             {
                 if (isCancelLoadingRef.current === true)
                 {
@@ -122,7 +124,7 @@ const SelectEpisode = ({ }) =>
                 // Process results
                 results.forEach((valid, index) =>
                 {
-                    if (valid && new_episodes.length < 5)
+                    if (valid && new_episodes.length < getCount)
                     {
                         new_episodes.push(urlChecks[index].date);
                     }
@@ -130,7 +132,7 @@ const SelectEpisode = ({ }) =>
 
                 tryCount += 7;
                 // Break if we've tried too many times
-                if (tryCount > 35)
+                if (tryCount > (7 * getCount))
                 {  // Arbitrary limit to prevent infinite loops
                     break;
                 }
@@ -155,6 +157,8 @@ const SelectEpisode = ({ }) =>
         {
             set_showLoading(false);
             set_showContent(true);
+            set_isLoading5(false);
+            set_isLoading10(false);
         }
     }
 
@@ -189,7 +193,6 @@ const SelectEpisode = ({ }) =>
         {
             const newState = prev;
             delete newState[episode];
-            console.log(newState);
             return newState;
         })
     }
@@ -245,8 +248,8 @@ const SelectEpisode = ({ }) =>
                         </div>
 
                         {program in bookmarks ?
-                            <Icon.BookmarkFill size={30} className={styles.bookmarkBtn} onClick={(e) => { onClickBookmarkBtn(); }}/> :
-                            <Icon.Bookmark size={30} className={styles.bookmarkBtn} onClick={(e) => { onClickBookmarkBtn(); }}/>
+                            <Icon.BookmarkFill size={30} className={styles.bookmarkBtn} onClick={(e) => { onClickBookmarkBtn(); }} /> :
+                            <Icon.Bookmark size={30} className={styles.bookmarkBtn} onClick={(e) => { onClickBookmarkBtn(); }} />
                         }
                     </div>
 
@@ -264,12 +267,21 @@ const SelectEpisode = ({ }) =>
                         )}
 
                         {episodes && episodes.length > 0 && (hasMore || showLoading) &&
-                            <LoadMoreButton
-                                theme={theme}
-                                text={showLoading ? '讀取中' : '讀取更多'}
-                                onClick={() => { showLoading == false && getEpisodeList() }}
-                                isLoading={showLoading}
-                            />
+                            <div className={styles.loadMoreBtnDiv}>
+                                <LoadMoreButton
+                                    theme={theme}
+                                    text={'讀取更多 (5集)'}
+                                    onClick={() => { if (showLoading == false) { getEpisodeList(5); set_isLoading5(true) } }}
+                                    isLoading={isLoading5}
+                                />
+
+                                <LoadMoreButton
+                                    theme={theme}
+                                    text={'讀取更多 (10集)'}
+                                    onClick={() => { if (showLoading == false) { getEpisodeList(10); set_isLoading10(true) }} }
+                                    isLoading={isLoading10}
+                                />
+                            </div>
                         }
 
                         {!episodes || episodes.length == 0 &&

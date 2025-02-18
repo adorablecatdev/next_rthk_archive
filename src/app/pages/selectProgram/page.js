@@ -71,7 +71,6 @@ const SelectProgram = ({ }) =>
             if (result?.data?.result)
             {
                 const newPrograms = result.data.result;
-                console.log(newPrograms);
 
                 if (!newPrograms || newPrograms.length === 0)
                 {
