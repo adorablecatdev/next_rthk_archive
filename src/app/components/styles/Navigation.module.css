@@ -1,0 +1,101 @@
+/* @import "../../globals.css"; */
+
+.container {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-bottom: 1px solid var(--border-bottom);
+    box-shadow: 0 2px 4px var(--navigation-shadow);
+}
+
+.leftContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.homeBtnContainer {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.homeBtnIcon {
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+}
+
+.homeBtnText {
+    color: var(--text-color1);
+    font-size: 18px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.homeBtnContainer:hover {
+    filter: drop-shadow(0 0 10px var(--sky-300));
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+.rightContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btnIcon {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    color: var(--text-color1);
+}
+
+
+.btnIcon:hover {
+    filter: drop-shadow(0 0 10px var(--sky-500));
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        height: 50px;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .homeBtnIcon {
+        height: 30px;
+        width: 30px;
+        margin: 2px;
+    }
+    
+    .homeBtnText { 
+        font-size: 14px;
+        margin: 2px;
+    }
+
+    .btnIcon {
+        width: 30px;
+        height: 30px;
+        margin: 2px;
+    }
+}
