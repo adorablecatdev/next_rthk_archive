@@ -1,13 +1,15 @@
 import axios from "axios";
 
-async function getSegmentUrls(station, program, episode, isCancelDownloadRef)
+async function getSegmentUrls(abortController, station, program, episode, isCancelDownloadRef)
 {
     var segmentUrls = [];
 
     try
     {
         const url = `https://rthkaod2022.akamaized.net/m4a/radio/archive/${station}/${program}/m4a/${episode.replaceAll('-', '')}.m4a/index_0_a.m3u8?`;
-        const response = await axios.get(url);
+        const response = await axios.get(url, {
+            signal: abortController.signal,
+        });
         const content = response.data;
 
         var splitArray = content.toString().split('\n');
@@ -26,7 +28,7 @@ async function getSegmentUrls(station, program, episode, isCancelDownloadRef)
     return segmentUrls;
 }
 
-async function downloadSegments(station, program, episode, segmentUrls, isCancelDownloadRef, set_downloadProgress)
+async function downloadSegments(abortController, station, program, episode, segmentUrls, isCancelDownloadRef, set_downloadProgress)
 {
     var segmentFiles = [];
     try
@@ -36,9 +38,11 @@ async function downloadSegments(station, program, episode, segmentUrls, isCancel
             if (isCancelDownloadRef.current[episode] == false)
             {
                 const url = `https://rthkaod2022.akamaized.net/m4a/radio/archive/${station}/${program}/m4a/${episode.replaceAll('-', '')}.m4a/${segmentUrls[i]}`;
-                const response = await axios.get(url, { responseType: 'arraybuffer' });
+                const response = await axios.get(url, {
+                    responseType: 'arraybuffer',
+                    signal: abortController.signal,
+                });
                 segmentFiles.push(response.data);
-
 
                 set_downloadProgress((prev) => ({ ...prev, [episode]: parseInt(i * 100 / segmentUrls.length) }));
             }

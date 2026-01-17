@@ -3,7 +3,7 @@
     width: calc(100% - 10px);
     height: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column; /* Changed from row to column */
     justify-content: space-between;
     align-items: center;
     margin: 5px;
@@ -53,33 +53,37 @@
 }
 
 .progressInactive {
-    position: absolute;
-    width: 100%;
-    height: 4px;
-    background-color: unset;
-    bottom: 0px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    display: none; /* Hide when inactive */
 }
 
 .progressActive {
-    position: absolute;
+    position: relative; /* Changed from absolute */
     width: 100%;
-    height: 4px;
+    height: 20px; /* Increased height */
     background-color: var(--progress-background);
     bottom: 0px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .progress {
     position: absolute;
-    height: 4px;
+    height: 100%; /* Use full height of container */
     background-color: var(--sky-300);
     bottom: 0px;
-    /* border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px; */
+    left: 0;
+}
+
+.progressText {
+    position: relative;
+    z-index: 1;
+    color: var(--text-color1);
+    font-size: 12px;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 800px) {

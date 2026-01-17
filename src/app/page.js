@@ -45,10 +45,10 @@ const Home = ({ }) =>
 
                         <div className={styles.header2}> 此網站內容均來自 rthk.hk </div>
 
-                        <div className={styles.header2}> 版本：1.0.0 </div>
+                        <div className={styles.header2}> 版本：1.0.1 </div>
 
                         <div className={styles.header2}>
-                            Copyright © 2025 Adorable Cat Dev
+                            Copyright © 2026 Adorable Cat Dev
                             <a href="mailto:adorablecatdev@gmail.com">
                                 <Icons.EnvelopeAt size={25} style={{ marginLeft: 10 }} />
                             </a>

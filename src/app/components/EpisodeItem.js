@@ -26,7 +26,10 @@ const EpisodeItem = ({ theme, episode, onClickDownload, onClickCancel, downloadP
             </div>
             <div className={episode in downloadProgress ? styles.progressActive : styles.progressInactive}>
                 {episode in downloadProgress &&
-                    <div className={styles.progress} style={{ width: `${downloadProgress?.[episode]}%` }}></div>
+                    <>
+                        <div className={styles.progress} style={{ width: `${downloadProgress?.[episode]}%` }}></div>
+                        <div className={styles.progressText}>{downloadProgress?.[episode]}%</div>
+                    </>
                 }
             </div>
         </div>

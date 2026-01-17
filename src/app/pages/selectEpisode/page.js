@@ -37,6 +37,7 @@ const SelectEpisode = ({ }) =>
     const [downloadProgress, set_downloadProgress] = useState({});
     const isCancelDownloadRef = useRef({});
     const isCancelLoadingRef = useRef(false);
+    const downloadControllersRef = useRef({});
 
     const [bookmarks, set_bookmarks] = useState({});
 
@@ -52,6 +53,11 @@ const SelectEpisode = ({ }) =>
             Object.keys(isCancelDownloadRef.current).forEach((episode) =>
             {
                 isCancelDownloadRef.current[episode] = true;
+            });
+
+            Object.keys(downloadControllersRef.current).forEach((episode) =>
+            {
+                downloadControllersRef.current[episode].abort();
             });
         };
     }, []);
@@ -164,12 +170,16 @@ const SelectEpisode = ({ }) =>
 
     async function startDownload(episode)
     {
+        // Create a new AbortController for this download
+        const abortController = new AbortController();
+        downloadControllersRef.current[episode] = abortController;
+
         // initial download
         isCancelDownloadRef.current[episode] = false;
 
         set_downloadProgress((prev) =>
         {
-            const newState = prev;
+            const newState = { ...prev };
             newState[episode] = 0;
             return newState;
         });
@@ -177,21 +187,34 @@ const SelectEpisode = ({ }) =>
         let segmentUrls;
         let segmentFiles;
 
-        if (isCancelDownloadRef.current[episode] == false)
-            segmentUrls = await getSegmentUrls(channel, program, episode, isCancelDownloadRef);
+        try
+        {
+            if (isCancelDownloadRef.current[episode] == false)
+                segmentUrls = await getSegmentUrls(abortController, channel, program, episode, isCancelDownloadRef);
 
-        if (isCancelDownloadRef.current[episode] == false)
-            segmentFiles = await downloadSegments(channel, program, episode, segmentUrls, isCancelDownloadRef, set_downloadProgress);
+            if (isCancelDownloadRef.current[episode] == false)
+                segmentFiles = await downloadSegments(abortController, channel, program, episode, segmentUrls, isCancelDownloadRef, set_downloadProgress);
 
-        if (isCancelDownloadRef.current[episode] == false)
-            await mergeSegments(segmentFiles, episode, programName, isCancelDownloadRef);
+            if (isCancelDownloadRef.current[episode] == false)
+                await mergeSegments(segmentFiles, episode, programName, isCancelDownloadRef);
+        } catch (error)
+        {
+            if (error.name === 'CanceledError' || error.name === 'AbortError')
+            {
+                console.log('Download cancelled for episode:', episode);
+            } else
+            {
+                console.error('Download error:', error);
+            }
+        }
 
         // when download is finished
         delete isCancelDownloadRef.current[episode];
+        delete downloadControllersRef.current[episode];
 
         set_downloadProgress((prev) =>
         {
-            const newState = prev;
+            const newState = { ...prev };
             delete newState[episode];
             return newState;
         })
@@ -201,9 +224,16 @@ const SelectEpisode = ({ }) =>
     {
         isCancelDownloadRef.current[episode] = true;
 
+        // Abort the axios requests immediately
+        if (downloadControllersRef.current[episode])
+        {
+            downloadControllersRef.current[episode].abort();
+            delete downloadControllersRef.current[episode];
+        }
+
         set_downloadProgress((prev) =>
         {
-            const newState = prev;
+            const newState = { ...prev };
             delete newState[episode];
             return newState;
         })
@@ -278,7 +308,7 @@ const SelectEpisode = ({ }) =>
                                 <LoadMoreButton
                                     theme={theme}
                                     text={'讀取更多 (10集)'}
-                                    onClick={() => { if (showLoading == false) { getEpisodeList(10); set_isLoading10(true) }} }
+                                    onClick={() => { if (showLoading == false) { getEpisodeList(10); set_isLoading10(true) } }}
                                     isLoading={isLoading10}
                                 />
                             </div>
