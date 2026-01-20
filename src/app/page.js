@@ -1,14 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { Input } from "antd";
 import styles from "./page.module.css";
 import { Fade } from "react-bootstrap";
 import Navigation from "./components/Navigation";
 import * as Icon from "react-bootstrap-icons";
 import { useRouter } from 'next/navigation';
-import { getStorageItem } from "./utilities/LocalStorage";
 import { useTheme } from "./utilities/ThemeContext";
 import * as Icons from "react-bootstrap-icons";
 

@@ -8,7 +8,7 @@ import Loading from "../../components/Loading";
 import styles from "./style.module.css";
 import Navigation from "../../components/Navigation";
 import EpisodeItem from "../../components/EpisodeItem";
-import { Fade, Spinner } from "react-bootstrap";
+import { Fade } from "react-bootstrap";
 import LoadMoreButton from "../../components/LoadMoreButton";
 import Error from "../../components/Error";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -18,7 +18,6 @@ import { getStorageItem, setStorageItem } from "@/app/utilities/LocalStorage";
 
 const SelectEpisode = ({ }) =>
 {
-    const router = useRouter();
     const searchParams = useSearchParams();
 
     const [channel, set_channel] = useState('');

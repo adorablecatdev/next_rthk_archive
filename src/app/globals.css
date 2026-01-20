@@ -1,5 +1,3 @@
-/* @import '../../src/app/utilities/Color.css'; */
-
 .body {
   --slate-50: #F8FAFC;
   --slate-100: #F1F5F9;
@@ -58,47 +56,6 @@
   --yellow-950: #422006;
 }
 
-/* .body[data-theme='light'] {
-  --background-color: #F8FAFC;
-  --text-color1: #64748B;
-  --text-color2: #94A3B8;
-  --button-color: white;
-  --border-color: #E2E8F0;
-  --item-background-color: white;
-  --progress-background: #E2E8F0;
-}
-
-.body[data-theme='dark'] {
-  --background-color: #1E293B;
-  --text-color1: #CBD5E1;
-  --text-color2: #94A3B8;
-  --button-color: black;
-  --border-color: #64748B;
-  --item-background-color: black;
-  --progress-background: #64748B;
-} */
-
-/* body[data-theme='light'] {
-  --background-color: var(--slate-50);
-  --text-color1: var(--slate-500);
-  --text-color2: var(--slate-400);
-  --button-color: white;
-  --border-color: var(--slate-200);
-  --item-background-color: white;
-  --progress-background: var(--slate-200);
-}
-
-body[data-theme='dark'] {
-  --background-color: var(--slate-800);
-  --text-color1: var(--slate-300);
-  --text-color2: var(--slate-400);
-  --button-color: black;
-  --border-color: var(--slate-500);
-  --item-background-color: black;
-  --progress-background: var(--slate-500);
-} */
-
-/* Using the colors */
 .container[data-theme='light'] {
   background-color: #F8FAFC;
   color: black;
@@ -112,6 +69,5 @@ body[data-theme='dark'] {
 .body {
   width: 100vw;
   height: 100dvh;
-  overflow: hidden;
   zoom: 100%;
 }
